@@ -1,0 +1,46 @@
+html,
+body{
+    height: 100%;
+    scroll-behavior: smooth;
+    font-size: 1rem;
+    font-family: 'Scheherazade New', serif;
+}
+.gradient{
+    background: rgb(0,97,242);
+    background: linear-gradient(135deg, rgba(0,97,242,1) 0%, rgba(105,0,199,1) 100%);
+    /*background-image: url('https://images.unsplash.com/photo-1632757717589-b4bcb73b0609?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80');*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
+    /*height: auto;*/
+}
+.custom-header{
+    margin-top: 4rem;
+    font-size: 1.25rem;
+    color: black;
+}
+.number-1 img{
+    cursor: pointer;
+}
+.number-2{
+    color: white;
+}
+.icon{
+    color: white;
+    width: 5rem;
+    height: 5rem;
+    font-size: 1.5rem;
+    border-radius: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    /*text-align: center;*/
+}
+.gallery{
+    background-color: whitesmoke;
+}
+.gallery img{
+    border-radius: 5%;
+}
+.end{
+    color: #fff;
+}

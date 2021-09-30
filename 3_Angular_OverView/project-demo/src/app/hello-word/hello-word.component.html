@@ -1,0 +1,11 @@
+<label >Input Fontsize</label>
+<input type="range" min="9" max="30" (change)="changeFontSize($event)" #element>
+<label >Input Age</label>
+<input type="number" class="bg-black" [(ngModel)]="age">
+<p class="output" [style.fontSize.px]= "fontSize">hello-word works!</p>
+<p > Age : {{age}}</p>
+<script>
+  $(document).ready(
+
+  )
+</script>
