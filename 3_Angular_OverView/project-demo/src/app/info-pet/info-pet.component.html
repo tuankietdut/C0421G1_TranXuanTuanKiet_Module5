@@ -1,0 +1,21 @@
+<h2>Profile of Pet</h2>
+
+<div>
+  <label>Input Name Pet</label>
+  <input type="text" [(ngModel)]="name">
+</div>
+
+
+<div>
+  <label>Input Image Url for pet</label>
+  <input type="text" (change)="changeImage($event.target.value)">
+</div>
+
+<div>
+  <h4>Name pet {{name}}</h4>
+  <img [src]="imageUrl" alt="Pet Image">
+</div>
+
+
+
+

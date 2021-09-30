@@ -1,0 +1,14 @@
+<label class="form-label">Input Number One</label>
+<input type="number" class="form-control" (change)="getNumberOne($event.target.value)">
+
+<label class="form-label">Input Number Two</label>
+<input type="number" class="form-control" (change)="getNumberTwo($event.target.value)">
+
+<select  (click)="showResult($event.target.value)">
+  <option value="+">Add</option>
+  <option value="-">Sub</option>
+  <option value="*">Multiple</option>
+  <option value="/">Divide</option>
+</select>
+<br>
+<p class="bg-light">Result {{result}}</p>

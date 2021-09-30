@@ -1,0 +1,4 @@
+<p>font-size works!</p>
+<input type="range" min="10" max="100" (change)="changeFontSize(element.value)" #element>
+
+<p [style.fontSize.px]="value">This is paragrah font size</p>

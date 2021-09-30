@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HelloWordComponent } from './hello-word.component';
+import { FontSizeComponent } from './font-size.component';
 
-describe('HelloWordComponent', () => {
-  let component: HelloWordComponent;
-  let fixture: ComponentFixture<HelloWordComponent>;
+describe('FontSizeComponent', () => {
+  let component: FontSizeComponent;
+  let fixture: ComponentFixture<FontSizeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HelloWordComponent ]
+      declarations: [ FontSizeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HelloWordComponent);
+    fixture = TestBed.createComponent(FontSizeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
