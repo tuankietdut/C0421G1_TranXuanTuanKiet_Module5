@@ -1,0 +1,22 @@
+<h2>Article</h2>
+<div *ngFor="let items of article">
+  <a href="{{items.url}}" target="_blank">{{items.name}}</a> || <app-like></app-like>
+</div>
+<h2>Create Article</h2>
+<table class="table table-light table-striped table-hover">
+  <thead>
+  <tr>
+    <th>Name Article</th>
+    <th colspan="30">Link Article</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><textarea cols="30" [(ngModel)]="name"></textarea></td>
+    <td><textarea cols="30" [(ngModel)]="url"></textarea></td>
+  </tr>
+  <tr>
+    <button class="btn-outline-info justify-content-end" (click)="createArticle()">Create</button>
+  </tr>
+  </tbody>
+</table>
