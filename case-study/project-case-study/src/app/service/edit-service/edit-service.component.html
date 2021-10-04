@@ -1,0 +1,51 @@
+<h2>Form Create Service</h2>
+<form>
+  <div class="mb-3">
+    <label for="nameService" class="form-label">Name Service</label>
+    <input type="text" class="form-control" id="nameService">
+  </div>
+
+  <div class="mb-3">
+    <label for="areaService" class="form-label">Area Service</label>
+    <input type="number" class="form-control" id="areaService">
+  </div>
+
+  <div class="mb-3">
+    <label for="costService" class="form-label">Cost Service</label>
+    <input type="number" class="form-control" id="costService">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="maxPeople">Max People</label>
+    <input type="number" class="form-control" id="maxPeople">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="standardRoom">Standard Room</label>
+    <input type="text" class="form-control" id="standardRoom">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="description">Description</label>
+    <input type="text" class="form-control" id="description">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="poolArea">Pool Areas</label>
+    <input type="text" class="form-control" id="poolArea">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="numberFloor">Number Floors</label>
+    <input type="text" class="form-control" id="numberFloor">
+  </div>
+
+  <div class="mb-3">
+    <label for="customerType">Service Type</label>
+    <select id="customerType" class="form-select">
+      <option *ngFor="let items of serviceTypeArr" value="{{items}}">{{items.name}}</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Create</button>
+</form>

@@ -1,0 +1,55 @@
+<h2>Form Create Customer</h2>
+<form>
+  <div class="mb-3">
+    <label for="codeCustomer" class="form-label">Code Customer</label>
+    <input type="text" class="form-control" id="codeCustomer">
+  </div>
+
+  <div class="mb-3">
+    <label for="nameCustomer" class="form-label">Name Customer</label>
+    <input type="text" class="form-control" id="nameCustomer">
+  </div>
+
+  <div class="mb-3">
+    <label for="birthdayCustomer" class="form-label">Birthday Customer</label>
+    <input type="date" class="form-control" id="birthdayCustomer">
+  </div>
+
+  <div class="mb-3">
+    <label for="genderCustomer">Gender Customer</label>
+    <select id="genderCustomer" class="form-select">
+      <option value="0">Male</option>
+      <option value="1">FeMale</option>
+      <option value="2">LGBT</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="idCard">IdCard Customer</label>
+    <input type="text" class="form-control" id="idCard">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="phoneCustomer">Phone Customer</label>
+    <input type="number" class="form-control" id="phoneCustomer">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="emailCustomer">Email Customer</label>
+    <input type="email" class="form-control" id="emailCustomer">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="addressCustomer">Address Customer</label>
+    <input type="text" class="form-control" id="addressCustomer">
+  </div>
+
+  <div class="mb-3">
+    <label for="customerType">Customer Type</label>
+    <select id="customerType" class="form-select">
+      <option *ngFor="let items of customerType" value="{{items}}">{{items.name}}</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Create</button>
+</form>

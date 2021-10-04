@@ -1,0 +1,60 @@
+<h2>Form Create Employee</h2>
+<form>
+  <div class="mb-3">
+    <label for="nameEmployee" class="form-label">Name Employee</label>
+    <input type="text" class="form-control" id="nameEmployee">
+  </div>
+
+  <div class="mb-3">
+    <label for="birthdayEmployee" class="form-label">Birthday</label>
+    <input type="date" class="form-control" id="birthdayEmployee">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="idCard">IdCard Employee</label>
+    <input type="text" class="form-control" id="idCard">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="salaryEmployee">Salary Employee</label>
+    <input type="number" class="form-control" id="salaryEmployee">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="phoneEmployee">Phone Employee</label>
+    <input type="number" class="form-control" id="phoneEmployee">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="emailEmployee">Email Employee</label>
+    <input type="email" class="form-control" id="emailEmployee">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="addressEmployee">Address Employee</label>
+    <input type="text" class="form-control" id="addressEmployee">
+  </div>
+
+  <div class="mb-3">
+    <label for="divisionEmployee">Division Employee</label>
+    <select id="divisionEmployee" class="form-select">
+      <option *ngFor="let items of divisionArr" value="{{items}}">{{items.name}}</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="positionEmployee">Position Employee</label>
+    <select id="positionEmployee" class="form-select">
+      <option *ngFor="let items of positionArr" value="{{items}}">{{items.name}}</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="educationEmployee">Education Employee</label>
+    <select id="educationEmployee" class="form-select">
+      <option *ngFor="let items of educationArr" value="{{items}}">{{items.name}}</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Create</button>
+</form>
