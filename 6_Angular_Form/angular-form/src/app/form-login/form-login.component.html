@@ -1,0 +1,25 @@
+<form [formGroup]="formLogin" (ngSubmit)="createForm()" ]>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="email" formControlName="email">
+  </div>
+
+  <div *ngIf="formLogin.controls.email.hasError('required') && formLogin.controls.email.dirty">
+    Nhạp vào
+  </div>
+  <div *ngIf="formLogin.controls.email.hasError('email') && formLogin.controls.email.dirty">
+    Nhap dung dinh dang email
+  </div>
+
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" class="form-control" id="password" formControlName="password">
+  </div>
+
+  <div *ngIf="formLogin.controls.password.hasError('required') && formLogin.controls.password.dirty">
+    Nhap password
+  </div>
+  <div *ngIf="formLogin.controls.password.hasError('minlength') && formLogin.controls.password.dirty">
+    Minlength 6
+  </div>
+</form>
