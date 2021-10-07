@@ -1,4 +1,5 @@
 <p>List Employee</p>
+<a [routerLink]="['/employee/create']">Create Student</a>
 <table class="table table-light table-striped table-hover">
   <thead>
   <tr>
@@ -30,10 +31,10 @@
     <td>{{items.education_id.name}}</td>
     <td>{{items.division_id.name}}</td>
     <td>
-      <button type="button" class="btn btn-warning">Edit</button>
+      <button type="button" class="btn btn-warning" (click)="showEdit(items.employee_id)">Edit</button>
     </td>
     <td>
-      <button type="button" class="btn btn-danger">Delete</button>
+      <button type="button" class="btn btn-danger" (click)="showDelete(items.employee_id)">Delete</button>
     </td>
   </tr>
   </tbody>

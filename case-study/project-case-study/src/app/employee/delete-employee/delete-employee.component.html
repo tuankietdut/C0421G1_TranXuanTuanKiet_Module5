@@ -1,4 +1,6 @@
 <h2>Delete Employee</h2>
 <div class="mb-3">
-  <p>Do you want to Delete {{nameEmployee}}</p>
+  <p>Do you want to Delete {{employeeObj.employee_name}}</p>
+  <button class="btn btn-warning" (click)="onDelete()">Ok Delete</button>
+  <button class="btn btn-warning" [routerLink]="['/student']">Back Home</button>
 </div>

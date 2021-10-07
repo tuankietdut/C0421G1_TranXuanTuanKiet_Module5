@@ -1,0 +1,1 @@
+Gặp bug ở employee chưa fix được anh, bị  undefined id, đã cho mở formcontrolName nhưng vẫn dính lỗi
