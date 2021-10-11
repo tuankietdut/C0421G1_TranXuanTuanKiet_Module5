@@ -1,4 +1,4 @@
-<p>List Contract</p>
+<a [routerLink]="['/contract/create']">Create Contract</a>
 <table class="table table-light table-striped table-hover">
   <thead>
   <tr>
@@ -10,41 +10,38 @@
     <th>Employee Name</th>
     <th>Customer Name</th>
     <th>Service Name</th>
-    <th>Attach Service</th>
-    <th>Quantity Attach Service</th>
-    <th colspan="2">Action</th>
+    <th>Action</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let items of contract_service_arr">
-    <td>{{items.contract_service_id}}</td>
-    <td>{{items.contract.contract_start_day}}</td>
-    <td>{{items.contract.contract_end_day}}</td>
-    <td>{{items.contract.contract_deposit}}</td>
-    <td>{{items.contract.contract_total_money}}</td>
-    <td>{{items.contract.employee.employee_name}}</td>
-    <td>{{items.contract.customer.customer_name}}</td>
-    <td>{{items.contract.service.service_name}}</td>
+  <tr *ngFor="let items of contractArr">
+    <td>{{items.id}}</td>
+    <td>{{items.contract_start_day}}</td>
+    <td>{{items.contract_end_day}}</td>
+    <td>{{items.contract_deposit}}</td>
+    <td>{{items.contract_total_money}}</td>
+    <td>{{items.employee.employee_name}}</td>
+    <td>{{items.customer.customer_name}}</td>
+    <td>{{items.service.service_name}}</td>
+<!--    <td>-->
+<!--      <span *ngFor="let childItems of items.service_attach">-->
+<!--        {{childItems.attach_service_name}}-->
+<!--        <br>-->
+<!--      </span>-->
+<!--    </td>-->
 
+<!--    <td>-->
+<!--      <span *ngFor="let childItems of items.quantity">-->
+<!--        {{childItems}}-->
+<!--        <br>-->
+<!--      </span>-->
+<!--    </td>-->
     <td>
-      <span *ngFor="let childItems of items.service_attach">
-        {{childItems.attach_service_name}}
-        <br>
-      </span>
+      <button type="button" class="btn btn-warning" (click)="addAttach(items.id)">Add Attach Service</button>
     </td>
-
-    <td>
-      <span *ngFor="let childItems of items.quantity">
-        {{childItems}}
-        <br>
-      </span>
-    </td>
-    <td>
-      <button type="button" class="btn btn-warning">Edit</button>
-    </td>
-    <td>
-      <button type="button" class="btn btn-danger">Delete</button>
-    </td>
+<!--    <td>-->
+<!--      <button type="button" class="btn btn-danger">Delete</button>-->
+<!--    </td>-->
   </tr>
   </tbody>
 </table>

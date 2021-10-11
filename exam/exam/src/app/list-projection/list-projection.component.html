@@ -1,0 +1,49 @@
+
+<button type="button" class="btn btn-info"><a style="text-decoration: none" [routerLink]="['/projection/create']">Create Projection</a></button>
+<table class="table table-light table-striped table-hover">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Code Projection</th>
+    <th>Name Movie</th>
+    <th>Start Day</th>
+    <th>Quantity of projection</th>
+    <th>Delete</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let items of projectArr">
+    <td>{{items.id}}</td>
+    <td>{{items.codeProject}}</td>
+    <td>{{items.movie.name}}</td>
+    <td>{{items.startDay | date: 'yyyy-MM-dd'}}</td>
+    <td>{{items.quantity}}</td>
+    <td>
+      <button mat-raised-button (click)="showModal(items)">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<!--<td>-->
+<!--  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="showModal(items)">Delete</button>-->
+<!--</td>-->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <span *ngIf="projectObj">{{projectObj.movie.name}}</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="onDelete()">Are you sure</button>
+      </div>
+    </div>
+  </div>
+</div>

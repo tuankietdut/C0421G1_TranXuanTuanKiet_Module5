@@ -1,7 +1,7 @@
 import {ServiceType} from "./service-type";
 
 export interface ServiceManager {
-  service_id?: number;
+  id?: number;
   service_name?: string;
   service_area?: number;
   service_cost?: number;

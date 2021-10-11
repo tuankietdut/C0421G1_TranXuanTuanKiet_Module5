@@ -1,10 +1,9 @@
-<p>List Employee</p>
 <a [routerLink]="['/employee/create']">Create Student</a>
 <table class="table table-light table-striped table-hover">
   <thead>
   <tr>
-    <th>ID</th>
-    <th>Name</th>
+    <th >ID</th>
+    <th >Name</th>
     <th>BirthDay</th>
     <th>Id Card</th>
     <th>Salary</th>
@@ -18,8 +17,8 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let items of employeeArr">
-    <td>{{items.employee_id}}</td>
+  <tr *ngFor="let items of employeeArr" >
+    <td>{{items.id}}</td>
     <td>{{items.employee_name}}</td>
     <td>{{items.employee_birthday}}</td>
     <td>{{items.employee_id_card}}</td>
@@ -31,11 +30,25 @@
     <td>{{items.education_id.name}}</td>
     <td>{{items.division_id.name}}</td>
     <td>
-      <button type="button" class="btn btn-warning" (click)="showEdit(items.employee_id)">Edit</button>
+      <button type="button" class="btn btn-warning" (click)="showEdit(items.id)">Edit</button>
     </td>
     <td>
-      <button type="button" class="btn btn-danger" (click)="showDelete(items.employee_id)">Delete</button>
+      <button type="button" class="btn btn-danger" (click)="showDelete(items.id)">Delete</button>
     </td>
   </tr>
   </tbody>
 </table>
+<nav aria-label="...">
+  <ul class="pagination pagination-lg">
+    <li class="page-item"><a class="page-link">Paginator</a></li>
+    <li *ngIf="page>1" class="page-item"><a class="page-link" (click)="previousPage()">Previous</a></li>
+    <li class="page-item active" aria-current="page">
+      <span class="page-link">{{page}}/{{totalNumber}}</span>
+    </li>
+    <li *ngIf="page<totalNumber" class="page-item"><a class="page-link" (click)="nextPage()">Next</a></li>
+    <li class="page-item"><a class="page-link" (click)="sortPage()">Sort ID DESC</a></li>
+  </ul>
+</nav>
+<label for = "searchName">Search by name Employee</label>
+<input type = "text" id="searchName" (change)="searchName($event.target.value)">
+

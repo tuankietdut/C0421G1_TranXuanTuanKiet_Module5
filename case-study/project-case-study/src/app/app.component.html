@@ -1,19 +1,99 @@
-<!--<app-list-employee></app-list-employee>-->
-<!--<div class="row justify-content-center">-->
-<!--  <div class="col-md-8">-->
-<!--    <app-create-employee></app-create-employee>-->
-<!--  </div>-->
-<!--</div>-->
-<!--<div class="container ">-->
-<!--  <div class="row justify-content-center">-->
-<!--    <div class="col-md-8 ">-->
-<!--      <app-list-customer></app-list-customer>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-<!--<app-list-contract></app-list-contract>-->
-<a routerLink="/employee">Employee</a>
-<router-outlet></router-outlet>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-gradient">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-lg-4 text-center" >
+        <a class="navbar-brand " href="#">Case Study</a>
+      </div>
+      <div class="col-lg-6 ">
+        <div class="collapse navbar-collapse " id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item offset-2">
+              <a class="nav-link"  routerLink="/employee">Employee</a>
+            </li>
+            <li class="nav-item offset-2">
+              <a class="nav-link" routerLink="/customer">Customer</a>
+            </li>
+            <li class="nav-item offset-2">
+              <a class="nav-link" routerLink="/service">Service</a>
+            </li>
+            <li class="nav-item offset-2">
+              <a class="nav-link" routerLink="/contract">Contract</a>
+            </li>
+            <li class="nav-item offset-2">
+              <a class="nav-link " style="width: 120px" routerLink="/contractAttach">Contract Attach</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid"
+     style="min-height: 90vh; background: linear-gradient(0deg, rgba(207,219,219,0.964438191960367) 42%, rgba(215,184,184,0.9475842593760972) 100%); ">
+  <div class="row">
+    <div class="col-lg-3">
+      <ul class="list-group">
+        <li class="list-group-item active" aria-current="true">An active item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+        <li class="list-group-item">A fourth item</li>
+        <li class="list-group-item">And a fifth one</li>
+      </ul>
+
+    </div>
+    <div class="col-lg-9 p-0 overflow-scroll ">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+
+<footer class = "bd-footer py-5 mt-5 bg-light">
+  <div class = "container py-3">
+    <div class = "row">
+      <div class = "col-lg-3">
+        <h5>Tutor Coach</h5>
+        <ul class = "list-unstyled">
+          <li class = "mb-2">Tutor a</li>
+          <li class = "mb-2">AAAAA</li>
+          <li class = "mb-2">
+            <p>Click here to listen</p>
+          </li>
+        </ul>
+      </div>
+      <div class = "col-lg-3">
+        <h5>More information</h5>
+        <ul class = "list-unstyled">
+          <li class = "mb-2">Docs</li>
+          <li class = "mb-2">Docs</li>
+          <li class = "mb-2">Docs</li>
+          <li class = "mb-2">Docs</li>
+        </ul>
+      </div>
+      <div class = "col-lg-3">
+        <h5>About us</h5>
+        <ul class = "list-unstyled">
+          <li class = "mb-2">Home</li>
+          <li class = "mb-2">Home</li>
+          <li class = "mb-2">Home</li>
+          <li class = "mb-2">Home</li>
+        </ul>
+      </div>
+      <div class = "col-lg-3">
+        <h5>Contact</h5>
+        <ul class = "list-unstyled">
+          <li class = "mb-2">Email</li>
+          <li class = "mb-2">Zalo</li>
+          <li class = "mb-2">Facebook</li>
+          <li class = "mb-2">Tutor Linh Aka King CSS Bootstrap</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
 
 
 

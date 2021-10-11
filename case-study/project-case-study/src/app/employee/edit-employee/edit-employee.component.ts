@@ -17,19 +17,19 @@ import {DivisionService} from "../../case-service/employee/division.service";
 })
 export class EditEmployeeComponent implements OnInit {
   employeeForm: FormGroup = new FormGroup({
-    employee_id: new FormControl(),
+    id: new FormControl(),
     employee_name: new FormControl('',Validators.compose([Validators.required])),
     employee_birthday: new FormControl('',Validators.compose([Validators.required])),
-    employee_id_card: new FormControl('',Validators.compose([Validators.required])),
+    employee_id_card: new FormControl('', Validators.compose([Validators.required, Validators.pattern('^(NV-)[\\d]{4}$')])),
     employee_salary: new FormControl('',Validators.compose([Validators.required])),
-    employee_phone: new FormControl('',Validators.compose([Validators.required])),
-    employee_email: new FormControl('',Validators.compose([Validators.required])),
+    employee_phone: new FormControl('', Validators.compose([Validators.required, Validators.pattern("^((\\(84\\)\\+(90))|(090)|(091)|(\\(84\\)\\+(91)))[\\d]{7}$")])),
+    employee_email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
     employee_address: new FormControl('',Validators.compose([Validators.required])),
-    position_id: new FormControl(),
-    education_id: new FormControl(),
-    division_id: new FormControl(),
+    position_id: new FormControl(''),
+    education_id: new FormControl(''),
+    division_id: new FormControl(''),
   })
-  positionArr: Position[];
+  positionArr: PositionEmployee[];
   educationArr: EducationDegree[];
   divisionArr: Division[];
 
@@ -43,23 +43,34 @@ export class EditEmployeeComponent implements OnInit {
   ) {
     this.positionService.getAll().subscribe((next)=> {
       this.positionArr = next;
-      console.log(this.positionArr)
-    })
-    this.educationService.getAll().subscribe((next)=> {
-      this.educationArr = next;
-      console.log(this.educationArr)
-    })
-    this.divisionService.getAll().subscribe((next)=> {
-      this.divisionArr = next;
-      console.log(this.divisionArr)
-    })
-    this.activeRouter.paramMap.subscribe((paramMap:ParamMap)=>{
-      const id_employee = +paramMap.get("id");
-      console.log(id_employee + "Id here");
-      this.employeeService.findById(id_employee).subscribe((next) =>{
+      console.log(next);
+      this.educationService.getAll().subscribe((next)=> {
+        this.educationArr = next;
         console.log(next);
-        this.employeeForm.setValue(next)
-      })
+        this.divisionService.getAll().subscribe((next)=> {
+          this.divisionArr = next;
+          console.log(next);
+          this.activeRouter.paramMap.subscribe((paramMap:ParamMap)=>{
+            const id_employee = +paramMap.get("id");
+            console.log(id_employee + "Id here");
+            this.employeeService.findById(id_employee).subscribe(
+              (next) => {console.log(next);
+              try {
+                this.employeeForm.setValue(next);
+              }catch (e) {
+                console.log("Errosr")
+              }
+              },
+            (errors) => {console.log("Erros")}
+            )})
+
+          // console.log(this.positionArr)
+    })
+
+      // console.log(this.educationArr)
+    })
+
+      // console.log(this.divisionArr)
     })
   }
 
@@ -67,8 +78,26 @@ export class EditEmployeeComponent implements OnInit {
   }
 
   onUpdate() {
-    this.employeeService.updateEmployee(this.employeeForm.value).subscribe((next)=>{
-      this.router.navigateByUrl('/employee');
-    })
+    if (this.employeeForm.valid){
+      this.employeeService.updateEmployee(this.employeeForm.value).subscribe((next)=>{
+        this.router.navigateByUrl('/employee');
+      })
+    }
   }
+
+  validationMessage = {
+    employee_id_card:[
+      {type: "required", message: "Bat buoc nhap"},
+      {type: "pattern", message: "Nhap dung dinh dang NV-XXXX"},
+    ],
+    employee_phone: [
+      {type: "required", message: "Bat buoc nhap"},
+      {type: "pattern", message: "Số điện thoại phải đúng định dạng 090xxxxxxx hoặc 091xxxxxxx hoặc (84)+90xxxxxxx hoặc (84)+91xxxxxxx"}
+    ],
+    employee_email: [
+      {type: "required", message: "Bat buoc nhap"},
+      {type: "email", message: "Dung dinh dang email"}
+    ]
+  }
+
 }

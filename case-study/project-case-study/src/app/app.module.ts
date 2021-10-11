@@ -20,6 +20,12 @@ import {AppRouterModule} from './app-router.module';
 import {RouterModule} from "@angular/router";
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { AddAttachComponent } from './contract/add-attach/add-attach.component';
+import { ListContractAttachComponent } from './contract/list-contract-attach/list-contract-attach.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSortModule} from "@angular/material/sort";
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -37,14 +43,21 @@ import {HttpClientModule} from "@angular/common/http";
     CreateServiceComponent,
     DeleteServiceComponent,
     ListContractComponent,
-    CreateContractComponent
+    CreateContractComponent,
+    AddAttachComponent,
+    ListContractAttachComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRouterModule,
     RouterModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

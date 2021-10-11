@@ -20,16 +20,21 @@ export class DeleteEmployeeComponent implements OnInit {
       const id_employee = +paramMap.get("id");
       this.employeeService.findById(id_employee).subscribe((next) => {
         console.log(next);
-        this.employeeObj = next;
+        try {
+          this.employeeObj = next;
+        }catch (e) {
+          console.log("Errors")
+        }
       });
     })
   }
 
   ngOnInit(): void {
+
   }
 
   onDelete() {
-    this.employeeService.deleteEmployee(this.employeeObj.employee_id).subscribe((next)=>{
+    this.employeeService.deleteEmployee(this.employeeObj.id).subscribe((next)=>{
       this.router.navigateByUrl("/employee");
     })
   }

@@ -1,0 +1,47 @@
+<h2>Create Project</h2>
+<form [formGroup]="projectionForm" (ngSubmit)="onCreate()">
+  <div class="mb-3">
+    <label for="codeProject" class="form-label">Code Project</label>
+    <input type="text" class="form-control" id="codeProject" formControlName="codeProject" (change)="inputCode($event.target.value)" >
+    <div class="errors" *ngFor="let errors of validationMessage.codeProject">
+        <ng-template [ngIf]="projectionForm.get('codeProject').hasError(errors.type) && projectionForm.get('codeProject').dirty">
+          {{errors.message}}
+        </ng-template>
+    </div>
+    <div class="errors" *ngIf="errorsCodeLoop">{{errorsCodeLoop}}</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="startDay" class="form-label">Start Day</label>
+    <input type="date" class="form-control" id="startDay" formControlName="startDay">
+    <div class="errors" *ngFor="let errors of validationMessage.startDay">
+      <ng-template [ngIf]="projectionForm.get('startDay').hasError(errors.type) && projectionForm.get('startDay').dirty">
+        {{errors.message}}
+      </ng-template>
+    </div>
+
+  </div>
+
+  <div class="mb-3">
+    <label for="quantity" class="form-label">Quantity</label>
+    <input type="number" class="form-control" id="quantity" formControlName="quantity">
+    <div class="errors" *ngFor="let errors of validationMessage.quantity">
+      <ng-template [ngIf]="projectionForm.get('quantity').hasError(errors.type) && projectionForm.get('quantity').dirty">
+        {{errors.message}}
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="movie">Movie</label>
+    <select id="movie" class="form-select" formControlName="movie">
+      <option *ngFor="let items of movieArr" [ngValue]="items">{{items.name}}</option>
+    </select>
+    <div class="errors" *ngIf="projectionForm.get('movie').hasError('required') && (projectionForm.get('movie').dirty||projectionForm.get('movie').touched )">
+      Bat buoc chon
+    </div>
+
+  </div>
+
+  <button type="submit" class="btn btn-primary">Create</button>
+</form>

@@ -1,0 +1,6 @@
+<h3 mat-dialog-title-title>Delete Projection</h3>
+<mat-dialog-content *ngIf="data">Are you sure to delete this projection {{data.project.movie.name}}</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel </button>
+  <button mat-button mat-dialog-close (click)="onDelete()">Ok </button>
+</mat-dialog-actions>

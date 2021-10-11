@@ -1,4 +1,4 @@
-<p>List Service</p>
+<a [routerLink]="['/service/create']">Create Service</a>
 <table class="table table-light table-striped table-hover">
   <thead>
   <tr>
@@ -17,7 +17,7 @@
   </thead>
   <tbody>
   <tr *ngFor="let items of serviceArr">
-    <td>{{items.service_id}}</td>
+    <td>{{items.id}}</td>
     <td>{{items.service_name}}</td>
     <td>{{items.pool_area}}</td>
     <td>{{items.service_cost}}</td>
@@ -28,10 +28,10 @@
     <td>{{items.number_floors}}</td>
     <td>{{items.service_type.name}}</td>
     <td>
-      <button type="button" class="btn btn-warning" (click)="showEdit(items)">Edit</button>
+      <button type="button" class="btn btn-warning" (click)="showEdit(items.id)">Edit</button>
     </td>
     <td>
-      <button type="button" class="btn btn-danger" (click)="showEdit(items)">Delete</button>
+      <button type="button" class="btn btn-danger" (click)="showDelete(items.id)">Delete</button>
     </td>
   </tr>
   </tbody>

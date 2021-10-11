@@ -13,15 +13,24 @@ export class EmployeeService {
     return  this.http.get(this.URL_EMPLOYEE);
   }
   findById(id: number){
-    return  this.http.get(this.URL_EMPLOYEE + "?employee_id=" + id);
+    return  this.http.get(this.URL_EMPLOYEE + "/" + id);
   }
   createEmployee(employee: Employee){
     return  this.http.post(this.URL_EMPLOYEE, employee);
   }
   updateEmployee(employee: Employee){
-    return  this.http.put(this.URL_EMPLOYEE, employee);
+    return  this.http.put(this.URL_EMPLOYEE + "/"+ employee.id, employee);
   }
   deleteEmployee(id: number){
-    return  this.http.delete(this.URL_EMPLOYEE + "?employee_id=" + id);
+    return  this.http.delete(this.URL_EMPLOYEE + "/" + id);
+  }
+  paginator(numberPage: number): Observable<Employee[] | any>{
+    return this.http.get(this.URL_EMPLOYEE+'?_page='+numberPage + '&_limit=2');
+  }
+  sortPage(numberPage: number):Observable<Employee[] | any>{
+    return this.http.get(this.URL_EMPLOYEE+'?_page='+numberPage + '&_limit=2'+ '&_sort=id' + '&_order=desc');
+  }
+  findByName(nameEmployee: string):Observable<Employee[] | any>{
+    return this.http.get(this.URL_EMPLOYEE+'?employee_name_like='+nameEmployee);
   }
 }

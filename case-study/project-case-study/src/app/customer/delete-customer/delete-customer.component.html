@@ -1,4 +1,5 @@
-<h2>Delete Customer</h2>
 <div class="mb-3">
-  <p>Do you want to Delete {{nameCustomer}}</p>
+  <p *ngIf="customerObj">Do you want to Delete {{customerObj.customer_name}}</p>
+  <button class="btn btn-warning" (click)="onDelete()">Delete</button>
+  <button class="btn btn-info" [routerLink]="['/customer']">Back Home</button>
 </div>

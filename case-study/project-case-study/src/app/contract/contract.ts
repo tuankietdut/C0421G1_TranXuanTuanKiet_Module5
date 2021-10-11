@@ -3,7 +3,7 @@ import {Customer} from "../customer/customer";
 import {ServiceManager} from "../service/serviceManager";
 
 export interface Contract {
-  contract_id?: number;
+  id?: number;
   contract_start_day?: string;
   contract_end_day?: string;
   contract_deposit?: number;

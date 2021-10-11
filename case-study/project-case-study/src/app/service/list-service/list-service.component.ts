@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ServiceManager} from "../serviceManager";
+import {HttpClient} from "@angular/common/http";
+import {ServiceManagerService} from "../../case-service/service/service-manager.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-list-service',
@@ -7,21 +10,17 @@ import {ServiceManager} from "../serviceManager";
   styleUrls: ['./list-service.component.css']
 })
 export class ListServiceComponent implements OnInit {
-  serviceArr?: ServiceManager[] = [
-    {service_id: 1, service_name: "DV-0001", service_area: 50, service_cost: 450000, service_max_people: 10, standard_room: "Phong 5*", description: "Xem phim, bể bơi, ăn uống tùy thích",
-      pool_area: 35, number_floors: 3, service_type: {id: 1, name: "Villa"}},
-    {service_id: 2, service_name: "DV-0002", service_area: 65, service_cost: 600000, service_max_people: 10, standard_room: "Phong 5*", description: "Xem phim, bể bơi, ăn uống tùy thích",
-      pool_area: 20, number_floors: 3, service_type: {id: 1, name: "Villa"}},
-    {service_id: 3, service_name: "DV-0003", service_area: 40, service_cost: 250000, service_max_people: 7, standard_room: "Phong 3*", description: "Xem phim, be boi",
-      pool_area: 0, number_floors: 2, service_type: {id: 2, name: "House"}}
-  ]
-  serviceObj: ServiceManager;
-  constructor() { }
+  serviceArr: ServiceManager[];
+  constructor(private router:Router, private serviceManagerService:ServiceManagerService) { }
 
   ngOnInit(): void {
+    this.serviceManagerService.getAll().subscribe((next) => this.serviceArr = next)
   }
 
-  showEdit(items: ServiceManager) {
-    this.serviceObj = items;
+  showEdit(id: number) {
+    this.router.navigate(['service','edit',id])
+  }
+  showDelete(id: number){
+    this.router.navigate(['service','delete',id])
   }
 }

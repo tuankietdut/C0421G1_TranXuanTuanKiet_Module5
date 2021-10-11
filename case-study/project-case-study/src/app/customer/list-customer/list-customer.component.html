@@ -1,4 +1,4 @@
-<p>List Customer</p>
+<a [routerLink]="['/customer/create']">Create Customer</a>
 <table class="table table-light table-striped table-hover">
   <thead>
   <tr>
@@ -17,7 +17,7 @@
   </thead>
   <tbody>
   <tr *ngFor="let items of customerArr">
-    <td>{{items.customer_id}}</td>
+    <td>{{items.id}}</td>
     <td>{{items.customer_code}}</td>
     <td>{{items.customer_name}}</td>
     <td>{{items.customer_birthday}}</td>
@@ -32,10 +32,10 @@
     <td>{{items.customer_address}}</td>
     <td>{{items.customer_type.name}}</td>
     <td>
-      <button type="button" class="btn btn-warning">Edit</button>
+      <button type="button" class="btn btn-warning" (click)="showEdit(items.id)">Edit</button>
     </td>
     <td>
-      <button type="button" class="btn btn-danger">Delete</button>
+      <button type="button" class="btn btn-danger" (click)="showDelete(items.id)">Delete</button>
     </td>
   </tr>
   </tbody>
