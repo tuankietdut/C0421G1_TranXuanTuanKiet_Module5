@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row justify-content-center my-2">
+    <div class="col-lg-8 col-md-10">
+      <h2 class="text-center" *ngIf="carObj">Chinh sua thong tin xe khach co so xe {{carObj.id}}</h2>
+      <form [formGroup]="carForm" (ngSubmit)="onUpdate()">
+        <div class="mb-3">
+          <label for="typeCar" class="form-label">Loai Xe</label>
+          <input type="text" class="form-control" id="typeCar" formControlName="typeCar">
+          <div class="errors" *ngIf="carForm.get('typeCar').hasError('required') && carForm.get('typeCar').dirty">Nhap loai xe</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="nameGarage" class="form-label">Ten Nha Xe</label>
+          <input type="text" class="form-control" id="nameGarage" formControlName="nameGarage">
+          <div class="errors" *ngIf="carForm.get('nameGarage').hasError('required') && carForm.get('nameGarage').dirty">Nhap ten nha xe</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="placeFrom">Diem di</label>
+          <select id="placeFrom" class="form-select" formControlName="placeFrom">
+            <option *ngFor="let items of placeArr" [selected]="carForm.controls.placeFrom.value.id === items.id" [ngValue]="items">{{items.name}}</option>
+          </select>
+          <div class="errors" *ngIf="carForm.get('placeFrom').hasError('required') && carForm.get('placeFrom').dirty">Please chon diem di</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="placeTo">Diem den</label>
+          <select id="placeTo" class="form-select" formControlName="placeTo">
+            <option *ngFor="let items of placeArr" [selected]="carForm.controls.placeTo.value.id === items.id" [ngValue]="items">{{items.name}}</option>
+          </select>
+          <div class="errors" *ngIf="carForm.get('placeTo').hasError('required') && carForm.get('placeTo').dirty">Please chon diem den</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="phone" class="form-label">So dien thoai</label>
+          <input type="text" class="form-control" id="phone" formControlName="phone">
+          <div class="errors" *ngIf="carForm.get('phone').hasError('required') && carForm.get('phone').dirty">Please nhap so dien thoai</div>
+          <div class="errors" *ngIf="carForm.get('phone').hasError('pattern') && carForm.get('phone').dirty">Số điện thoại phải bắt đầu bằng 090 hoặc 093 hoặc 097 và có 10 số</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="email">Email</label>
+          <input type="text" class="form-control" id="email" formControlName="email">
+          <div class="errors" *ngIf="carForm.get('email').hasError('required') && carForm.get('email').dirty">Please nhap email</div>
+          <div class="errors" *ngIf="carForm.get('email').hasError('email') && carForm.get('email').dirty">Please dung dinh dang email</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="timeStart">Gio di</label>
+          <input type="time" class="form-control" id="timeStart" formControlName="timeStart">
+          <div class="errors" *ngIf="carForm.get('timeStart').hasError('required') && carForm.get('timeStart').dirty">Please nhap gio di</div>
+          <div class="errors" *ngIf="carForm.get('timeStart').hasError('min') && carForm.get('timeStart').dirty">Gio di phai lon hon hoac bang 5.AM</div>
+
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="timeEnd">Gio den</label>
+          <input type="time" class="form-control" id="timeEnd" formControlName="timeEnd" >
+          <div class="errors" *ngIf="carForm.get('timeEnd').hasError('required') && carForm.get('timeEnd').dirty">Please nhap gio ve</div>
+          <div class="errors" *ngIf="carForm.get('timeEnd').hasError('timeEnd') && carForm.get('timeEnd').dirty">Gio ve phai nho hon hoac bang 11PM</div>
+        </div>
+
+        <div *ngIf="messageErr" class="errors">{{messageErr}}</div>
+
+        <button type="submit" class="btn btn-primary me-2">Sua</button>
+        <button type="submit" class="btn btn-primary" [routerLink]="['']">Quay ve</button>
+
+      </form>
+    </div>
+  </div>
+</div>
+

@@ -12,13 +12,17 @@ import { DeleteProjectionComponent } from './delete-projection/delete-projection
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
+import { ListCarComponent } from './car-component/list-car/list-car.component';
+import { EditCarComponent } from './car-component/edit-car/edit-car.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListProjectionComponent,
     CreateProjectionComponent,
-    DeleteProjectionComponent
+    DeleteProjectionComponent,
+    ListCarComponent,
+    EditCarComponent
   ],
   imports: [
     BrowserModule,

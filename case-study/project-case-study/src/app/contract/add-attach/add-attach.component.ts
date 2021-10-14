@@ -14,9 +14,11 @@ import {ContractService} from "../../case-service/contract/contract.service";
 })
 export class AddAttachComponent implements OnInit {
   attachArr: Attach[];
+  check: boolean[] = [false, false, false, false, false];
   attachSelect: Attach[] = [];
   quantitySelect: number[] = [];
   contractObj: Contract;
+  messageErrors: string;
 
   contractAttachForm: FormGroup = new FormGroup({
     contract: new FormControl(),
@@ -41,27 +43,51 @@ export class AddAttachComponent implements OnInit {
   }
 
   onCreate() {
-    this.contractAttachForm.get('service_attach').setValue(this.attachSelect);
-    this.contractAttachForm.get('quantity').setValue(this.quantitySelect);
-    // console.log(this.contractAttachForm.value);
-    this.contractAttachService.createContractAttach(this.contractAttachForm.value).subscribe(next => {
-      // console.log(next);
-      this.router.navigateByUrl('/contractAttach');
-    })
+    if (this.messageErrors==''){
+      this.contractAttachForm.get('service_attach').setValue(this.attachSelect);
+      this.contractAttachForm.get('quantity').setValue(this.quantitySelect);
+      this.contractAttachService.createContractAttach(this.contractAttachForm.value).subscribe(next => {
+        this.router.navigateByUrl('/contractAttach');
+      })
+    }
   }
 
 
   onCheck(items: Attach, check: any) {
    if (check === true){
      this.attachSelect.push(items);
+     console.log(this.quantitySelect[this.attachSelect.indexOf(items)]);
+     if (this.messageErrors == 'Please tik '+ items.attach_service_name){
+       this.messageErrors = '';
+     }else if (this.quantitySelect[this.attachSelect.indexOf(items)] == undefined) {
+       this.messageErrors = "Please input quantity of this attach service ";
+     }
    }else {
+     this.messageErrors = "Delete quantity please";
      const findIndex = this.attachSelect.findIndex(value => value.id == items.id);
       this.attachSelect.splice(findIndex);
+      if (this.quantitySelect[findIndex]){
+        this.quantitySelect.splice(findIndex);
+      }
    }
   }
 
 
-  onInput(value: any) {
-    this.quantitySelect.push(value)
+  onInput(value: number, items: Attach) {
+    if (this.messageErrors == 'Delete quantity please'){
+      this.messageErrors = '';
+      return;
+    }
+    if (value<1){
+      this.messageErrors = 'Input must larger 0';
+      return;
+    }
+    let index = this.attachSelect.indexOf(items);
+    if (index == -1){
+      this.messageErrors = "Please tik " + items.attach_service_name;
+    }else {
+      this.quantitySelect[index] = value;
+      this.messageErrors = '';
+    }
   }
 }

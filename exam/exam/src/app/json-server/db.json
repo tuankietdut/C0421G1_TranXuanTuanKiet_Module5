@@ -42,5 +42,46 @@
       "quantity": 10,
       "id": 3
     }
+  ],
+  "place": [
+    {
+      "id": 1,
+      "name": "Quang Nam"
+    },
+    {
+      "id": 2,
+      "name": "Da Nang"
+    },
+    {
+      "id": 3,
+      "name": "Hue"
+    },
+    {
+      "id": 4,
+      "name": "Quang Tri"
+    },
+    {
+      "id": 5,
+      "name": "Nghe An"
+    }
+  ],
+  "car": [
+    {
+      "id": 2,
+      "typeCar": "Giuong nam",
+      "nameGarage": "Mai Linh",
+      "placeFrom": {
+        "id": 1,
+        "name": "Quang Nam"
+      },
+      "placeTo": {
+        "id": 4,
+        "name": "Quang Tri"
+      },
+      "phone": "0935124713",
+      "email": "123@gmail.com",
+      "timeStart": "05:37",
+      "timeEnd": "22:38"
+    }
   ]
 }

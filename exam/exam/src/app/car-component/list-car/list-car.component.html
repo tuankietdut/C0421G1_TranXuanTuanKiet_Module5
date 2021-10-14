@@ -1,0 +1,60 @@
+<h2>Danh Sach Cac Xe Dang Ky O Ben Xe XYZ</h2>
+<button type="button" class="btn btn-info"><a style="text-decoration: none" [routerLink]="['/car/create']">Create New Car Transfer</a></button>
+<table class="table table-light table-striped table-hover">
+  <thead>
+  <tr>
+    <th>So xe</th>
+    <th>Loai xe</th>
+    <th>Ten nha xe</th>
+    <th>Diem di</th>
+    <th>Diem den</th>
+    <th>So dien thoai</th>
+    <th>Email</th>
+    <th>Gio di</th>
+    <th>Gio den</th>
+    <th colspan="2">Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let items of carArr">
+    <td>{{items.id}}</td>
+    <td>{{items.typeCar}}</td>
+    <td>{{items.nameGarage}}</td>
+    <td>{{items.placeFrom.name }}</td>
+    <td>{{items.placeTo.name}}</td>
+    <td>{{items.phone}}</td>
+    <td>{{items.email}}</td>
+    <td>{{items.timeStart}}</td>
+    <td>{{items.timeEnd}}</td>
+    <td>
+      <button  type="button" class="btn btn-warning" (click)="showEdit(items.id)" >Sua</button>
+    </td>
+    <td>
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="showModal(items)">Xoa</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<!--<td>-->
+<!--  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="showModal(items)">Delete</button>-->
+<!--</td>-->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <span *ngIf="carObj">Ban co muon xoa so xe nay {{carObj.id}} ??</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="onDelete()">Are you sure</button>
+      </div>
+    </div>
+  </div>
+</div>
