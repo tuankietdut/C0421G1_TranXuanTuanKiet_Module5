@@ -12,10 +12,17 @@ import {Car} from "../../interface/car";
 export class ListCarComponent implements OnInit {
   carArr: Car[];
   carObj: Car;
+  totalPage: number;
+  pageNumber: number;
   constructor(private router: Router, private carService: CarService , private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.carService.getAll().subscribe(next => this.carArr = next);
+    this.carService.getAllWithPage().subscribe(next => {
+      console.log(next);
+      this.totalPage = next.totalPages;
+      this.pageNumber = next.number;
+      this.carArr = next.content;
+    });
   }
 
   showEdit(id: number) {
@@ -31,6 +38,21 @@ export class ListCarComponent implements OnInit {
       let ref = document.getElementById("cancel");
       ref.click();
       this.ngOnInit();
+    })
+  }
+
+  previousPage() {
+    this.carService.getAllWithPage(--this.pageNumber).subscribe(next => {
+      console.log(next);
+      this.carArr = next.content;
+    })
+
+  }
+
+  nextPage() {
+    this.carService.getAllWithPage(++this.pageNumber).subscribe(next => {
+      console.log(next);
+      this.carArr = next.content;
     })
   }
 }

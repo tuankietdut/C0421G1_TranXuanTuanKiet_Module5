@@ -12,7 +12,10 @@ export class CarService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Car[] |any>{
-    return this.http.get(this.URL_CAR+'/list');
+    return this.http.get(this.URL_CAR+'/list' );
+  }
+  getAllWithPage(page?: number){
+    return this.http.get(this.URL_CAR+'/list?page='+ page );
   }
   findCarById(id: number){
     return this.http.get(this.URL_CAR + "/" + id);
@@ -22,5 +25,8 @@ export class CarService {
   }
   deleteById(id: number){
     return this.http.delete(this.URL_CAR + "/" + id);
+  }
+  createCar(items: Car){
+    return this.http.post(this.URL_CAR + '/create', items);
   }
 }

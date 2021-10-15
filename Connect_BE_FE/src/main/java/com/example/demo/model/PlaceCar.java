@@ -1,11 +1,13 @@
 package com.example.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class , property = "id", scope = Integer.class)
 public class PlaceCar {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,13 +15,27 @@ public class PlaceCar {
 
     private String name;
 
-    @JsonBackReference
+    @JsonBackReference(value = "placeOne")
+//    @JsonIgnoreProperties
+//    @JsonIgnore
     @OneToMany(mappedBy = "placeFrom")
-    private Set<Car> carFrom;
+    private List<Car> carFrom;
 
-    @JsonBackReference
+    @JsonBackReference(value = "placeTwo")
+//    @JsonIgnoreProperties
+//    @JsonIgnore
     @OneToMany(mappedBy = "placeTo")
-    private Set<Car> carTo;
+    private List<Car> carTo;
+
+    public PlaceCar() {
+    }
+
+    public PlaceCar(int id, String name, List<Car> carFrom, List<Car> carTo) {
+        this.id = id;
+        this.name = name;
+        this.carFrom = carFrom;
+        this.carTo = carTo;
+    }
 
     public int getId() {
         return id;
@@ -37,19 +53,19 @@ public class PlaceCar {
         this.name = name;
     }
 
-    public Set<Car> getCarFrom() {
+    public List<Car> getCarFrom() {
         return carFrom;
     }
 
-    public void setCarFrom(Set<Car> carFrom) {
+    public void setCarFrom(List<Car> carFrom) {
         this.carFrom = carFrom;
     }
 
-    public Set<Car> getCarTo() {
+    public List<Car> getCarTo() {
         return carTo;
     }
 
-    public void setCarTo(Set<Car> carTo) {
+    public void setCarTo(List<Car> carTo) {
         this.carTo = carTo;
     }
 }

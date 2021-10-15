@@ -1,24 +1,28 @@
 package com.example.demo.model;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.hibernate.annotations.Target;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 
 @Entity
-public class Car {
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class , property = "id", scope = Integer.class)
+public class Car  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String typeCar;
     private String nameGarage;
-
-    @JsonManagedReference(value = "placeFrom")
+//    @JsonManagedReference(value = "placeOne")
+//    @JsonIgnore
     @ManyToOne(targetEntity = PlaceCar.class)
     @JoinColumn(referencedColumnName = "id")
     private PlaceCar placeFrom;
 
-    @JsonManagedReference(value = "placeTo")
+//    @JsonManagedReference(value = "placeTwo")
+//    @JsonIgnore
     @ManyToOne(targetEntity = PlaceCar.class)
     @JoinColumn(referencedColumnName = "id")
     private PlaceCar placeTo;
@@ -27,6 +31,21 @@ public class Car {
     private String email;
     private String timeStart;
     private String timeEnd;
+
+    public Car() {
+    }
+
+    public Car(int id, String typeCar, String nameGarage, PlaceCar placeFrom, PlaceCar placeTo, String phone, String email, String timeStart, String timeEnd) {
+        this.id = id;
+        this.typeCar = typeCar;
+        this.nameGarage = nameGarage;
+        this.placeFrom = placeFrom;
+        this.placeTo = placeTo;
+        this.phone = phone;
+        this.email = email;
+        this.timeStart = timeStart;
+        this.timeEnd = timeEnd;
+    }
 
     public int getId() {
         return id;

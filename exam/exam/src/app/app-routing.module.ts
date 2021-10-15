@@ -4,11 +4,13 @@ import {ListProjectionComponent} from "./list-projection/list-projection.compone
 import {CreateProjectionComponent} from "./create-projection/create-projection.component";
 import {ListCarComponent} from "./car-component/list-car/list-car.component";
 import {EditCarComponent} from "./car-component/edit-car/edit-car.component";
+import {CreateCarComponent} from "./car-component/create-car/create-car.component";
 
 
 const routes: Routes = [
   {path: '', component: ListCarComponent},
   {path: 'car/edit/:id', component: EditCarComponent},
+  {path: 'car/create', component: CreateCarComponent},
   {path: 'projection', component: ListProjectionComponent},
   {path: 'projection/create', component: CreateProjectionComponent},
 

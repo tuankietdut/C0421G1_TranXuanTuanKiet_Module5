@@ -14,6 +14,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import { ListCarComponent } from './car-component/list-car/list-car.component';
 import { EditCarComponent } from './car-component/edit-car/edit-car.component';
+import { CreateCarComponent } from './car-component/create-car/create-car.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { EditCarComponent } from './car-component/edit-car/edit-car.component';
     CreateProjectionComponent,
     DeleteProjectionComponent,
     ListCarComponent,
-    EditCarComponent
+    EditCarComponent,
+    CreateCarComponent
   ],
   imports: [
     BrowserModule,

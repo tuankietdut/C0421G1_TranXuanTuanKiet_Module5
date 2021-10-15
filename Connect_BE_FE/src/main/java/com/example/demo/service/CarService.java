@@ -12,4 +12,5 @@ public interface CarService {
     Car saveCar(Car car);
     void deleteCarById(int idCar);
     Optional<Car> findCarById(int idCar);
+    Page<Car> getAllWithPage(Pageable pageable);
 }

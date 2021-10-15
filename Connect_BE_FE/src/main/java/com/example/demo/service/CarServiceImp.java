@@ -33,4 +33,9 @@ public class CarServiceImp implements CarService {
     public Optional<Car> findCarById(int idCar) {
         return this.carRepository.findById(idCar);
     }
+
+    @Override
+    public Page<Car> getAllWithPage(Pageable pageable) {
+        return this.carRepository.findAll(pageable);
+    }
 }
